@@ -52,6 +52,7 @@ while( stdin.readline().strip('n').startswith('Y')):
 	print('Would you like to enter another employee? Y/N')
 
 browser = Browser('firefox', profile='splinter')
+# firefox cannot locate splinter profile, downloading webdriver for more testing
 url = "http://" + printer + "/web/guest/en/websys/webArch/authForm.cgi"
 browser.visit(url)
 browser.fill('userid_work',login[0])
