@@ -1,11 +1,11 @@
-#python printer webportal interaction
+<!--python printer webportal interaction -->
 
-#example code from webpage
+<!--example code from webpage -->
 
-#every form input proceeds with javascript:
+<!--every form input proceeds with javascript:-->
 <input value="Go to Next" class="defaultButton" onclick="javascript:adrsWizardForward();" type="button">
 
-#add user form##
+<!--add user form-->
 <form id="form_STEP" onsubmit="return false;">
 <input name="wimToken" value="1949621170" type="hidden">
 <input name="stepListIn" class="necessary" value="BASE" id="basic" checked="true" disabled="true" type="checkbox">Basic Information</label>
@@ -15,7 +15,7 @@
 </form>
 <input value="Go to Next" class="defaultButton" onclick="javascript:adrsWizardForward();" type="button">
 
-#basic information form##
+<!--basic information form-->
 <form id="form_BASE" onsubmit="return false;">
 <input name="wimToken" value="1949621170" type="hidden">
 Registration No.(Required):<input name="entryIndexIn" value="00139" class="necessary" size="20" maxlength="5" type="text">
@@ -29,7 +29,7 @@ Add to Freq.:
 <label><input name="entryTagInfoIn" value="2" onclick="" text="Off" type="radio">Off</label>
 <input value="Go to Next" class="defaultButton" onclick="javascript:adrsWizardForward();" type="button">
 
-#email destination form##
+<!--email destination form-->
 <form id="form_MAIL" onsubmit="return false;">
 <input name="wimToken" value="1949621170" type="hidden">
 Email Address(Required):<input name="mailAddressIn" value="" class="necessary" size="50" maxlength="128" type="text">
@@ -37,14 +37,14 @@ Email Address(Required):<input name="mailAddressIn" value="" class="necessary" s
 </form>
 <input value="Go to Next" class="defaultButton" onclick="javascript:adrsWizardForward();" type="button">
 
-#confirm registration form##
+<!--onfirm registration form-->
 <form id="form_CONFIRM" onsubmit="return false;"><input name="wimToken" value="1949621170" type="hidden"></form>
 <input value="OK" class="defaultButton" onclick="javascript:adrsWizardForward();" type="button">
 
-#delete user prompt##
+<!--delete user prompt-->
 <a href="javascript:ConfDelete()" class="commandLabel" onmouseover="changeImage(cmdDelete,'img_DELETE',1)" onmouseout="changeImage(cmdDelete,'img_DELETE',0)">
 <nobr><img src="http://10.7.1.63/images/cmdDelete.gif" name="img_DELETE" alt="" title="" border="0" align="absmiddle">Delete</nobr>
 </a>
 
-#confirm user deletion##
+<!--confirm user deletion-->
 <a href="javascript:Delete()" class="defaultTableCommandButton">Yes</a>
