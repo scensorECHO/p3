@@ -3,25 +3,26 @@ from sys import stdin
 
 
 def sortTitle(n):
-	if (n[0]=='A') or (n[0]=='A'):
+	c = n[0]
+	if (c=='A') or (c=='A'):
 		return '2';
-	if (n[0]=='C') or (n[0]=='D'):
+	if (c=='C') or (c=='D'):
 		return '3';
-	if (n[0]=='E') or (n[0]=='F'):
+	if (c=='E') or (c=='F'):
 		return '4';
-	if (n[0]=='G') or (n[0]=='H'):
+	if (c=='G') or (c=='H'):
 		return '5';
-	if (n[0]=='I') or (n[0]=='J') or (n[0]=='K'):
+	if (c=='I') or (c=='J') or (c=='K'):
 		return '6';
-	if (n[0]=='L') or (n[0]=='M') or (n[0]=='N'):
+	if (c=='L') or (c=='M') or (c=='N'):
 		return '7';
-	if (n[0]=='O') or (n[0]=='P') or (n[0]=='Q'):
+	if (c=='O') or (c=='P') or (c=='Q'):
 		return '8';
-	if (n[0]=='R') or (n[0]=='S') or (n[0]=='T'):
+	if (c=='R') or (c=='S') or (c=='T'):
 		return '9';
-	if (n[0]=='U') or (n[0]=='V') or (n[0]=='W'):
+	if (c=='U') or (c=='V') or (c=='W'):
 		return '10';
-	if (n[0]=='X') or (n[0]=='Y') or (n[0]=='Z'):
+	if (c=='X') or (c=='Y') or (c=='Z'):
 		return '11';
 	else:
 		return '1';
@@ -52,7 +53,6 @@ while( stdin.readline().strip('n').startswith('Y')):
 	print('Would you like to enter another employee? Y/N')
 
 browser = Browser('firefox', profile='splinter')
-# firefox cannot locate splinter profile, downloading webdriver for more testing
 url = "http://" + printer + "/web/guest/en/websys/webArch/authForm.cgi"
 browser.visit(url)
 browser.fill('userid_work',login[0])
