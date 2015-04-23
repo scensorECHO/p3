@@ -9,3 +9,7 @@ Entirely on my own time, just meant to make a tedious process quicker and easier
 
 Planning to use the Splinter API, an extension of selenium, to emulate a web-browser interaction in order to 
 fill forms and call javascript functions. 
+
+Update 04/22/15: Issues utilizing a Firefox profile loading the Browser with the splinter API. 
+Likely an issue with the development environment being restricted in the workgroup.
+Switching to the Selenium WebDriver to load Firefox and configuration
