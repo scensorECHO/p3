@@ -1,69 +1,100 @@
-from splinter.browser import Browser
+# This application will be used to access all the printers web-based portals. 
+# In doing so, it will allow Benteler to submit user information for all printers from a single CLI application.
+# All browser interaction will be directed by the splinter API, built on top of the selenium project.
+# WebDriver still needs to be downloaded for Firefox due to an error loading a custom profile 
+# on launch of a new Browser object. 
+
+# from selenium import webdriver
+# from selenium.webdriver.common.keys import Keys
 from sys import stdin
 
+title = dict({'A':2,'B':2,'C':3,'D':3,'E':4,'F':4,'G':5,'H':5,'I':6,'J':6,'K':6,'L':7,'M':7,
+	'N':7,'O':8,'P':8,'Q':8,'R':9,'S':9,'T':9,'U':10,'V':10,'W':10,'X':11,'Y':11,'Z':11})
+printers = []
+employees = []
+login = []
 
 def sortTitle(n):
-	c = n[0]
-	if (c=='A') or (c=='A'):
-		return '2';
-	if (c=='C') or (c=='D'):
-		return '3';
-	if (c=='E') or (c=='F'):
-		return '4';
-	if (c=='G') or (c=='H'):
-		return '5';
-	if (c=='I') or (c=='J') or (c=='K'):
-		return '6';
-	if (c=='L') or (c=='M') or (c=='N'):
-		return '7';
-	if (c=='O') or (c=='P') or (c=='Q'):
-		return '8';
-	if (c=='R') or (c=='S') or (c=='T'):
-		return '9';
-	if (c=='U') or (c=='V') or (c=='W'):
-		return '10';
-	if (c=='X') or (c=='Y') or (c=='Z'):
-		return '11';
-	else:
-		return '1';
+	return title.get(n[0],1);
 
+def inputUserInfo():
+	print('Would you like to enter an employee? Y/N')
+	if(stdin.readline().strip('n').startswith('Y'))
+		print('Enter the following information')
+		name = input('Name (Last, First ): ').strip()
+		key = name[:16]
+		email = input('Email: ').strip()
+		title = '1'
+		title = sortTitle(name)
 
-printers = open('printer.list','r').read().splitlines()
-printer = printer[0]
-login = open('login.info','r').read().splitlines()
+		employees.append(dict([('name',name), ('key',key), ('email',email), ('title',title)]))
 
-employees = []
+		print(employees[0]['name'])
+		print(employees[0]['key'])
+		print(employees[0]['email'])
+		print(employees[0]['title'])
+		inputUserInfo()
+	return 0;
 
-print('Would you like to enter an employee? Y/N')
-while( stdin.readline().strip('n').startswith('Y')):
-	print('Enter the following information')
-	name = input('Name (Last, First ): ').strip()
-	key = name[:16]
-	email = input('Email: ').strip()
-	title = '1'
-	title = sortTitle(name)
+with open('printer.list') as f:
+    for line in f.readlines():
+    	printers.append(line.rstrip())
 
-	employees.append(dict([('name',name), ('key',key), ('email',email), ('title',title)]))
+printer = printers[0] 
 
-	print(employees[0]['name'])
-	print(employees[0]['key'])
-	print(employees[0]['email'])
-	print(employees[0]['title'])
+inputUserInfo()
 
-	print('Would you like to enter another employee? Y/N')
+# commenting out all selenium functionality until recursive user prompt fixed
 
-browser = Browser('firefox', profile='splinter')
-url = "http://" + printer + "/web/guest/en/websys/webArch/authForm.cgi"
-browser.visit(url)
-browser.fill('userid_work',login[0])
-browser.fill('password_work',login[1])
-browser.find_link_by_text('Login').first.click()
-browser.find_link_by_text('Address Book').first.click()
-browser.find_link_by_text('Detail Input').first.click()
-browser.find_link_by_text('Add User').first.click()
-browser.fill('entryNameIn', employees[0]['name'])
-browser.fill('entryDisplayNameIn',employees[0]['key'])
-browser.select('entryTagInfoIn',employees[0]['title'])
-browser.fill('mailAddressIn',employees[0]['email'])
-browser.screenshot('test.png')
-browser.find_link_by_text('OK').first.click()
+# # switched driver to selenium base driver for firefox
+# driver = webdriver.Firefox()
+
+# # for printer in printers #for future use with all printers
+# url = "http://" + printer + "/web/guest/en/websys/webArch/authForm.cgi"
+# driver.get(url)
+
+# # locate login and password forms
+# loginform = driver.find_element_by_id('userid_work')
+# passwordform = driver.driver.find_element_by_id('password_work')
+
+# # type in user credentials
+# loginform.send_keys(login[0])
+# passwordform.send_keys(login[1])
+
+# # log in using given credential
+# loginbutton = driver.find_element_by_link_text('Login')
+# loginbutton.click() 
+
+# # go to Address Book
+# addrbook = driver.find_element_by_link_text('Address Book')
+# addrbook.click()
+
+# # go to detail input
+# detailinput = driver.find_element_by_link_text('Detail Input')
+# detailinput.click()
+
+# # go to add user
+# adduser = driver.find_element_by_link_text('Add User')
+# adduser.click()
+
+# # begin filling forms 
+# name = driver.find_element_by_id('entryNameIn')
+# name.click()
+# name.send_keys( employees[0]['name'])
+
+# displayName = driver.find_element_by_id('entryDisplayNameIn')
+# displayName.click()
+# displayName.send_keys(employees[0]['key'])
+
+# title = driver.find_element_by_id('entryTagInfoIn')
+# title.click()
+# title.send_keys(employees[0]['title'])
+
+# mailAddr = driver.find_element_by_id('mailAddressIn')
+# mailAddr.click()
+# mailAddr.send_keys(employees[0]['email'])
+
+# # driver.screenshot('test.png') #old splinter code
+
+# confirmbutton = driver.find_element_by_link_text('OK')
+# confirmbutton.click()
