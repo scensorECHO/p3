@@ -14,3 +14,5 @@ Using the selenium API along with Firefox to drive the web-browser interaction a
 Update 04/22/15: Issues utilizing a Firefox profile loading the Browser with the splinter API. 
 Likely an issue with the development environment being restricted in the workgroup.
 Switching to the Selenium WebDriver to load Firefox and configuration
+
+Update 05/28/15: Past issues are likely due to the web portal being accessed. All attempts with latest projects using selenium have been successful and warranted no issues related to cookies. It may just be a dead end here.
